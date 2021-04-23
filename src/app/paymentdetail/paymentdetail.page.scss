@@ -1,0 +1,77 @@
+
+ion-header{
+    font-family: "Myriad Pro";
+    ion-title{
+        color: white;
+        text-align: center;
+    }
+    ion-toolbar.toolbar-title-default.md.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-toolbar.toolbar-title-default.ios.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-button.ion-color.ion-color-secondary.ios.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+ 
+    ion-button.ion-color.ion-color-secondary.md.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+    h2{
+        margin: 0%;
+        margin-top: 3px;
+    }
+    img{
+        width: 32px;
+    margin-left: auto;
+    display: block;
+  
+    }
+    ion-icon{
+        color: white;
+    }
+    ion-col{
+        padding: 0;
+    }
+   
+   
+}
+ion-content{
+    ion-card{
+    padding: 8%;
+    border-radius: 29px;
+    background: linear-gradient(155deg,#2aa02d, #245527);
+    }
+    p{
+        margin: 0%;
+        color: white;
+    }
+    img{
+        width: 40px;
+    }
+    .digit{
+        font-size: 30px;
+    }
+    ion-col{
+        padding: 0;
+        color: white;
+        font-weight: bold;
+    }
+    .orange{
+        background: linear-gradient(155deg, #4854e0, #0b1478) !important;
+    }
+    .pink{
+        background: linear-gradient(155deg, #eb445a, #9d1628) !important;
+    }
+    ion-button.addcard{
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        height: 30px;
+        font-weight: bold;
+        height: 47px;
+        --background: linear-gradient(155deg,#2aa02d, #245527);
+    }
+
+}

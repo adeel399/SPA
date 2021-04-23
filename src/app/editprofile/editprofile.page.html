@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>
+      <h2>Update Profile</h2>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button  color="secondary" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="{{dp}}" class="mydp">
+  <form [formGroup]="loginForm">
+    <ion-card class="ion-padding-horizontal">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text" formControlName="name" required="true" value="{{name}}" placeholder="Your Name"  [(ngModel)]="name"></ion-input>
+        <ion-label error-field color="danger" *ngIf="loginForm.controls.name.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
+  
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input type="email" formControlName="email" required="true"   placeholder="Email Address"  [(ngModel)]="eaddres"></ion-input>
+        <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
+        <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('email') && reactiveSubmitted" no-margin>{{errorMessages.email.email}}</ion-label>
+       
+      </ion-item>
+      <ion-item >
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password" required="true" placeholder="Password" [(ngModel)]="pass"></ion-input>
+        <ion-label error-field color="danger" *ngIf="loginForm.controls.password.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.password.required}}</ion-label>
+       
+      </ion-item>
+      <ion-item >
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" formControlName="cpassword" required="true" placeholder="Confirm Password" [(ngModel)]="pass"></ion-input>
+        <ion-label error-field color="danger" *ngIf="loginForm.controls.cpassword.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.cpassword.required}}</ion-label>
+       
+      </ion-item>
+    </ion-card>
+    </form>
+    <ion-button shape="block" [disabled]="!loginForm.valid" (click)="update()">
+      Update
+    </ion-button>
+</ion-content>

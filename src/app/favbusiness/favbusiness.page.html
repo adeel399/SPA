@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="end">
+      
+    <ion-button  color="secondary" (click)="fab()">
+      <ion-icon name="add-outline"></ion-icon>
+  </ion-button>
+    </ion-buttons> -->
+    <ion-row>
+      <ion-col size="2">
+        <img src="assets/imgs/cam.png">
+      </ion-col>
+      <ion-col size="7">
+        <ion-title>
+          <h2>Businesses</h2>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-buttons slot="start">
+      <ion-button  color="secondary" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <br>
+<ion-row >
+  <ion-col size="6" *ngFor="let album of albumlist">
+    <ion-card >
+      <div>
+      <!-- <ion-icon name="camera" class="cam" (click)="capture(album.ID)"></ion-icon> -->
+    </div>
+    <img *ngIf="album.ThumbnailURL" src="{{album.ThumbnailURL}}" (click)="albumview(album.ID,album.OwnerProfilePictureURL,album.OwnerName)">
+    <img *ngIf="album.ThumbnailURL == null" src="assets/imgs/no.jpg" (click)="albumview(album.ID,album.OwnerProfilePictureURL,album.OwnerName)">
+      <ion-footer class="ion-no-border">
+        <ion-row>
+          <ion-col size="9" (click)="album()">
+            <p class="cate">{{album.Name}}</p>
+            <p class="small">by {{album.OwnerName}}</p>
+            <p class="small">{{album.PictureCount}} Photos</p>
+          </ion-col>
+          
+          <!-- <ion-col szie="3" (click)="presentPopover($event,album.ID)">
+            <ion-icon name="ellipsis-vertical" class="menu"></ion-icon>
+          </ion-col> -->
+        </ion-row>
+      </ion-footer>
+    </ion-card>
+  </ion-col>
+</ion-row>
+<!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="fab()">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab> -->
+</ion-content>

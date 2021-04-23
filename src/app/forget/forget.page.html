@@ -1,0 +1,32 @@
+
+
+<ion-content>
+  <img src="assets/imgs/header.png">
+  <img src="assets/imgs/logo.png" class="logo">
+  <div class="ion-padding-horizontal container">
+  
+  <br>
+  <form [formGroup]="forgetForm">
+  <ion-card class="ion-padding-horizontal">
+    <p class="sign">Foget Password</p>
+    <ion-item>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input type="email" formControlName="email" required="true" placeholder="Email Address"  [(ngModel)]="eaddres"></ion-input>
+      <ion-label error-field color="danger" *ngIf="forgetForm.controls.email.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
+      <ion-button class="iconimg" slot="end" fill="clear">
+       
+        <ion-img src="assets/imgs/user.png"></ion-img>
+    </ion-button>
+    </ion-item>
+  </ion-card>
+  </form>
+  <br>
+  <ion-button shape="block" [disabled]="!forgetForm.valid" (click)="forget()">
+    Submit
+  </ion-button>
+  <br>
+  <p class="ion-text-center return" (click)="return()">Back To Login</p>
+  </div>
+  <img src="assets/imgs/footer.png" class="footer">
+  </ion-content>
+  

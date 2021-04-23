@@ -1,0 +1,17 @@
+
+  <ion-content class="ion-padding-horizontal">
+    <h3 class="ion-text-center">Add New Album</h3>
+    <br>
+    <form [formGroup]="loginForm">
+    <ion-label>Album Name</ion-label>
+    <ion-input type="text" formControlName="album" required="true" [(ngModel)]="album" placeholder="Your Album Name"></ion-input>
+   <br>
+   <ion-label error-field color="danger" *ngIf="loginForm.controls.album.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.album.required}}</ion-label>
+  
+   </form>
+    <ion-button shape="block" [disabled]="!loginForm.valid" class="addcard" (click)="addalbum()">
+      Create Album
+    </ion-button>
+  </ion-content>
+   
+    

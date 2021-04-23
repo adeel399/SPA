@@ -1,0 +1,206 @@
+
+ion-header{
+    font-family: "Myriad Pro";
+    ion-title{
+        color: white;
+        text-align: center;
+    }
+    ion-toolbar.toolbar-title-default.md.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-toolbar.toolbar-title-default.ios.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-button.ion-color.ion-color-secondary.ios.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+ 
+    ion-button.ion-color.ion-color-secondary.md.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+    h2{
+        margin: 0%;
+        margin-top: 3px;
+    }
+    img{
+        width: 32px;
+    margin-left: auto;
+    display: block;
+  
+    }
+    ion-icon{
+        color: white;
+    }
+    ion-col{
+        padding: 0;
+    }
+   
+   
+}
+ion-content{
+    --background:#f9f9f9;
+    p {
+        margin: auto;
+    }
+    .small{
+        font-weight: bold;
+    font-size: 12px;
+    color: #cacaca;
+    }
+    .cate{
+        font-size: 15px;
+    font-weight: bold;
+    color: black;
+    }
+    ion-col{
+        padding: 0;
+    }
+    
+    .round{
+        .dp{
+            width: 60px;
+            height: 60px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-radius: 23px;
+        }
+    width: 65px;
+    height: 65px;
+    border-radius: 23px;
+    background: white;
+    box-shadow: 4px 4px 37px #585858;
+    padding: 3%;
+    }
+    .albumtitle{
+    margin-top: 10%;
+    font-size: 17px;
+    font-weight: bold;
+    }
+    .creator{
+    font-size: 13px;
+    font-weight: bold;
+    color: #9c9c9c;
+    }
+    .cam{
+        position: absolute;
+        right: 8%;
+        color: white;
+        font-size: 25px;
+    }
+    ion-card{
+    margin: 0;
+    box-shadow: none;
+    }
+    .menutitle{
+        float: right;
+    font-size: 25px;
+    }
+    .total{
+        font-size: 12px;
+        color: #a0a0a0;
+        margin-top: 23%;
+    }
+    ion-input{
+        border: 1px solid gray;
+        border-radius: 25px;
+    }
+    .labl{
+    margin-bottom: 2%;
+    margin-left: 3%;
+    font-weight: bold;
+    }
+    .myalbum{
+        font-size: 20px;
+    font-weight: bold;
+    margin-top: 0%;
+    }
+
+    .small{
+        font-weight: bold;
+    font-size: 12px;
+    color: #cacaca;
+    }
+    .cate{
+        font-size: 15px;
+    font-weight: bold;
+    color: black;
+    }
+    .slidimg{
+        min-width: 90%;
+        max-width: 90%;
+        max-height: 150px;
+        min-height: 150px;
+        border-radius: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        box-shadow: 0 0px 0px white, 0 -9px 0px 0px white, 13px 0 0px -7px #222428, -12px 0 1px -6px #222428;
+    }
+    .slidedes{
+        text-align: left;
+    }
+    .cam{
+        position: absolute;
+        right: 8%;
+        color: white;
+        font-size: 25px;
+    }
+    ion-card{
+    margin: 0;
+    box-shadow: none;
+    }
+    .plus{
+        margin-top: 4%;
+        color: black;
+        font-size: 30px;
+        float: right;
+    }
+    .menu{
+        margin-top: 9%;
+    color: black;
+    font-size: 18px;
+    float: right;
+    }
+    .des{
+    font-size: 14px;
+    color: #a7a6a6;
+    }
+    .myplan{
+        font-size: 20px;
+    font-weight: bold;
+    color: black;
+    }
+    ion-slides.crd{
+        ion-card{
+            padding: 4%;
+            border-radius: 29px;
+            background: linear-gradient(155deg,#2aa02d, #245527);
+            }
+            p{
+                margin: 0%;
+                color: white;
+            }
+            img{
+                width: 40px;
+                margin-right: auto;
+                display: block;
+            }
+            .digit{
+                font-size: 22px;
+                padding: 6px;
+            }
+            ion-col{
+                padding: 0px;
+                color: white;
+               
+            }
+            .orange{
+                background: linear-gradient(155deg, #4854e0, #0b1478) !important;
+            }
+            .pink{
+                background: linear-gradient(155deg, #eb445a, #9d1628) !important;
+            }
+    }
+
+}

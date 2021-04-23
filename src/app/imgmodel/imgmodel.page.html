@@ -1,0 +1,16 @@
+
+
+<ion-content fullscreen>
+
+<ion-slides  [options]="slideOpts">
+  <ion-slide>
+    <img  src="{{firstimg}}" >
+    <p>this</p>
+  </ion-slide>
+  <ion-slide  *ngFor="let img of imgs let i = index;">
+
+    <img  src="{{img.url.ImageURL}}" >
+   
+  </ion-slide>
+</ion-slides>
+</ion-content>

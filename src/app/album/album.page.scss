@@ -1,0 +1,114 @@
+
+ion-header{
+    font-family: "Myriad Pro";
+    ion-title{
+        color: white;
+        
+    }
+    ion-toolbar.toolbar-title-default.md.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-toolbar.toolbar-title-default.ios.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-button.ion-color.ion-color-secondary.ios.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+ 
+    ion-button.ion-color.ion-color-secondary.md.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+    h2{
+        margin: 0%;
+        margin-top: 3px;
+    }
+    img{
+        width: 32px;
+    margin-left: auto;
+    display: block;
+  
+    }
+    ion-icon{
+        color: white;
+        font-size: 28px;
+    }
+    ion-col{
+        padding: 0;
+    }
+   
+   
+}
+
+
+
+ion-content{
+    --background:#f9f9f9;
+    p {
+        margin: auto;
+    }
+    .small{
+        font-weight: bold;
+    font-size: 12px;
+    color: #cacaca;
+    }
+    .cate{
+        font-size: 15px;
+    font-weight: bold;
+    color: black;
+    }
+    ion-col{
+        padding: 0;
+    }
+    .dp{
+        width: 60px;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 23px;
+    }
+    .round{
+    width: 65px;
+    height: 65px;
+    border-radius: 23px;
+    background: white;
+    box-shadow: 4px 4px 37px #585858;
+    padding: 3%;
+    }
+    .albumtitle{
+    margin-top: 8%;
+    font-size: 17px;
+    font-weight: bold;
+    }
+    .creator{
+    font-size: 13px;
+    font-weight: bold;
+    color: #9c9c9c;
+    }
+    .cam{
+        position: absolute;
+        right: 8%;
+        color: red;
+        font-size: 25px;
+    }
+    ion-card{
+    margin: 0;
+    box-shadow: none;
+    }
+    .menu{
+        margin-top: 78%;
+        color: black;
+        font-size: 22px;
+        float: right;
+    }
+
+    .pins{
+        column-count: 2;
+    }
+    .pin{
+    margin: 0px -7px -5px;
+    padding: 0px;
+    overflow: scroll;
+    }
+   
+}

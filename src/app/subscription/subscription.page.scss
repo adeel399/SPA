@@ -1,0 +1,107 @@
+
+ion-header{
+    font-family: "Myriad Pro";
+    ion-title{
+        color: white;
+        text-align: center;
+    }
+    ion-toolbar.toolbar-title-default.md.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-toolbar.toolbar-title-default.ios.in-toolbar.hydrated {
+        --background: linear-gradient(155deg,#245527 , #2aa02d);
+    }
+    ion-button.ion-color.ion-color-secondary.ios.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+ 
+    ion-button.ion-color.ion-color-secondary.md.button.button-clear.in-toolbar.ion-activatable.ion-focusable.hydrated {
+        width: 48px;
+    }
+    h2{
+        margin: 0%;
+        margin-top: 3px;
+    }
+    img{
+        width: 32px;
+    margin-left: auto;
+    display: block;
+  
+    }
+    ion-icon{
+        color: white;
+    }
+    ion-col{
+        padding: 0;
+    }
+   
+   
+}
+ion-content{
+    h3{
+        margin: 0;
+    color: white;
+    }
+    p{
+        margin: 0;
+    }
+    ion-card{
+        width: 250px;
+    height: 400px;
+    overflow: scroll;
+    }
+   .free{
+    background: #002b38;
+    border-bottom: 3px solid white;
+    border-bottom-style: dotted;
+   }
+   ion-card-header.stand{
+    background: linear-gradient(155deg ,#245527,#2aa02d );
+    border-bottom: 3px solid white;
+    border-bottom-style: dotted;
+   }
+   .prem{
+    background: #d96c00;
+    border-bottom: 3px solid white;
+    border-bottom-style: dotted;
+   }
+   .type{
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+   }
+   .data{
+    background: #cacaca;
+   }
+   .btnfree{
+   
+    --background: #002b38;
+   }
+   
+   .btnprem{
+    
+    --background: #d96c00;
+   }
+   ion-button.upgrade{
+    --background: linear-gradient(155deg ,#2aa02d ,#245527 );
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+   }
+   .allowed{
+    background: #55e659;
+    color: black;
+   }
+   .green{
+    color: #035c06;
+    font-size: 22px;
+   }
+   .red{
+    color: red;
+    font-size: 22px;
+   }
+   .notallowed{
+    background: #f4f5f8;
+    color: black;
+   }
+}

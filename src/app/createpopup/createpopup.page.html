@@ -1,0 +1,17 @@
+
+  <ion-content class="ion-padding-horizontal">
+    <h3 class="ion-text-center">Request Album Access</h3>
+    <br>
+    <form [formGroup]="loginForm">
+    <ion-label>Access Code</ion-label>
+    <ion-input type="text" formControlName="album" required="true" [(ngModel)]="album" placeholder="Enter Access Code Here.."></ion-input>
+   <br>
+   <ion-label error-field color="danger" *ngIf="loginForm.controls.album.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.album.required}}</ion-label>
+  
+   </form>
+    <ion-button shape="block" [disabled]="!loginForm.valid" class="addcard" (click)="addalbum()">
+      Request Access
+    </ion-button>
+  </ion-content>
+   
+    

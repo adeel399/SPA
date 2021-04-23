@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <img src="assets/imgs/cam.png">
+      </ion-col>
+      <ion-col >
+        <ion-title>
+          <h2>Subscriptions</h2>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-buttons slot="start">
+      <ion-button  color="secondary" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-slides  [options]="slideOpts">
+    <ion-slide  *ngFor="let sub of subscriptionlist let i = index">
+      <ion-card>
+        <ion-card-header  [ngClass]="{'free': sub.Name=='FREE', 'prem':sub.Name=='PAID'}">
+          <h3 class="ion-text-center">{{sub.Name}}</h3>
+        </ion-card-header>
+        <ion-card-content>
+        <div>
+          <ion-row  *ngFor="let pkg of sub.Details let num= index" >
+            <ion-col size="2" >
+              <ion-icon name="checkmark-outline" *ngIf="pkg.Allowed=='1'" class="green"></ion-icon>
+              <ion-icon name="close"  *ngIf="pkg.Allowed=='0'" class="red"></ion-icon>
+            </ion-col>
+            <ion-col>
+              <p>{{pkg.Feature}}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-button shape="block"  [ngClass]="{'btnfree': sub.Name=='FREE', 'btnprem':sub.Name=='PAID'}" (click)="home()">
+          Select
+        </ion-button>
+      </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <br>
+  <p class="ion-text-center">Your Current Subscription PLan is</p>
+  <p class="ion-text-center">Basic (Free)</p>
+  
+  <ion-button shape="block"  class="upgrade" (click)="upgrade()">
+    Upgrade Now
+  </ion-button>
+  <br>
+</ion-content>

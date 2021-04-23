@@ -1,0 +1,104 @@
+ion-content{
+    --background: #e7e7e7;
+    .logo{
+        margin-top: -23%;
+        margin-left: auto;
+        display: block;
+        margin-right: 6%;
+    }
+    p.logo{
+    position: absolute;
+    font-size: 60px;
+    margin-left: 10%;
+    margin-top: 20%;
+    color: #ffff;
+    }
+
+    .container{
+        .sign{
+            margin: 2px;
+            margin-left: 5%;
+            font-size: 20px;
+            font-weight: bold;
+            color: #3e4a59;
+        }
+        .footer{
+            margin-left: auto;
+    margin-right: auto;
+    display: block;
+        }
+        .forget{
+            color: #537255;
+            font-weight: bold;
+            font-size: 13px;
+        }
+      
+        ion-card{
+            padding: 2%;
+            padding-bottom: 4%;
+            img{
+                width: 5%;
+            }
+        }
+        ion-button.md.button.button-block.button-solid.ion-activatable.ion-focusable.hydrated {
+            --background: linear-gradient(155deg,#2aa02d, #245527);
+            margin-left: auto;
+          
+            
+            height: 46px;
+            --border-radius: 7px;
+        }
+        ion-button.ios.button.button-block.button-solid.ion-activatable.ion-focusable.hydrated {
+            --background: linear-gradient(155deg,#2aa02d, #245527);
+            margin-left: auto;
+          
+            
+            height: 46px;
+            --border-radius: 7px;
+        }
+        ion-col.ion-text-start.md.hydrated {
+            font-size: 14px;
+            color: #111111;
+            margin-left: 2%;
+        }
+        ion-col.ion-text-start.ios.hydrated {
+            font-size: 14px;
+            color: #111111;
+            margin-left: 2%;
+        }
+        ion-col.ion-text-end.md.hydrated {
+            font-size: 14px;
+            color: #111111;
+            margin-right: 2%;
+        }
+        ion-col.ion-text-end.ios.hydrated {
+            font-size: 14px;
+            color: #111111;
+            margin-right: 2%;
+        }
+        .already{
+            color: #3e4a59;
+            font-size: 14px;
+        }
+        span{
+            color: #299b2c;
+        }
+        ion-checkbox{
+            margin-top: 16%;
+        }
+        .remember{
+            color: #3e4a59;
+          
+           font-size: 14px;
+        }
+    }
+    .item-has-focus .label-floating.sc-ion-label-md-h:not(.ion-color) {
+        color: #299b2c;
+    }
+    ion-button.iconimg.md.button.button-small.button-clear.ion-activatable.ion-focusable.hydrated {
+        margin-top: 12%;
+    }
+    ion-button.iconimg.ios.button.button-small.button-clear.ion-activatable.ion-focusable.hydrated {
+        margin-top: 12%;
+    }
+}

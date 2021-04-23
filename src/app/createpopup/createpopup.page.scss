@@ -1,0 +1,25 @@
+ion-content{
+   
+   
+    ion-button.addcard{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 18%;
+        width: 40%;
+        height: 30px;
+        font-weight: bold;
+        height: 47px;
+        --background: linear-gradient(155deg,#2aa02d, #245527);
+    }
+    ion-input{
+    border: 1px solid gray;
+    border-radius: 23px;
+    }
+    ion-datetime{
+        border: 1px solid gray;
+        border-radius: 23px;
+    }
+    ion-label{
+        margin-left: 3%;
+    }
+}

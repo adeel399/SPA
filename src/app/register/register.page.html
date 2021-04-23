@@ -1,0 +1,83 @@
+
+
+<ion-content >
+  <img src="assets/imgs/header.png" >
+  <img src="assets/imgs/logo.png" class="logo">
+  <div class="ion-padding-horizontal container">
+  
+  <br>
+  <form [formGroup]="loginForm">
+  <ion-card class="ion-padding-horizontal">
+    <p class="sign">Signup</p>
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" formControlName="user" required="true" placeholder="Email Address"  [(ngModel)]="user"></ion-input>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.user.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.user.required}}</ion-label>
+      <ion-button class="iconimg" slot="end" fill="clear">
+       
+        <ion-img src="assets/imgs/user.png"></ion-img>
+    </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input type="email" formControlName="email" required="true" placeholder="Email Address"  [(ngModel)]="eaddres"></ion-input>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('email') && reactiveSubmitted" no-margin>{{errorMessages.email.email}}</ion-label>
+      <ion-button class="iconimg" slot="end" fill="clear">
+       
+        <ion-img src="assets/imgs/mail.png"></ion-img>
+    </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password" required="true" placeholder="Password" [(ngModel)]="pass"></ion-input>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.password.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.password.required}}</ion-label>
+      <ion-button class="iconimg" slot="end" fill="clear">
+       
+        <ion-img src="assets/imgs/pass.png"></ion-img>
+    </ion-button>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" formControlName="confirmpassword" required="true" placeholder="Password" [(ngModel)]="cpass"></ion-input>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.confirmpassword.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.confirmpassword.required}}</ion-label>
+      <ion-button class="iconimg" slot="end" fill="clear">
+       
+        <ion-img src="assets/imgs/pass.png"></ion-img>
+    </ion-button>
+    </ion-item>
+    <ion-row class="busi">
+      <ion-col  size="8">
+        <ion-label class="areyou">Are You A Business?</ion-label>
+      </ion-col>
+    
+     <ion-col></ion-col>
+      <ion-col size="2">
+        <ion-checkbox   formControlName="check" color="light" class="tic"></ion-checkbox>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  </form>
+  <ion-row>
+    <ion-col size="7" >
+      <ion-row>
+        <ion-col size="2" >
+          <ion-checkbox [checked]="check" color="light"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label class="remember">Remember Me</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col size="5">
+      <ion-button shape="block"  [disabled]="!loginForm.valid" (click)="register()">
+        SIGNUP
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <br>
+  <p class="ion-text-center already">Already Have An Account? <span (click)="login()">Login</span></p>
+  </div>
+  <img src="assets/imgs/footer.png" class="footer">
+  </ion-content>
+  

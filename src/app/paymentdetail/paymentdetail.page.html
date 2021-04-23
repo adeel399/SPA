@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <img src="assets/imgs/cam.png">
+      </ion-col>
+      <ion-col >
+        <ion-title>
+          <h2>Payment Details</h2>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-buttons slot="start">
+      <ion-button  color="secondary"  (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+<br>
+<ion-card *ngFor="let card of cardlist">
+  <img src="{{card.Brand}}">
+  <ion-row>
+    <ion-col class="ion-text-center digit">****</ion-col>
+    <ion-col class="ion-text-center digit">****</ion-col>
+    <ion-col class="ion-text-center digit">****</ion-col>
+    <ion-col class="ion-text-end digit">{{card.Last4}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col></ion-col>
+    <ion-col class="ion-text-end" size="8">Valid Thru {{card.Expiry}}</ion-col>
+  </ion-row>
+</ion-card>
+<ion-button shape="block" class="addcard" (click)="addcard()">
+  Add New Card
+</ion-button>
+</ion-content>
