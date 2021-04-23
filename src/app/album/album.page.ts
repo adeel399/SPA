@@ -122,8 +122,11 @@ images:any=[];
       component: ViewerModalComponent,
       componentProps:{
         src:galleryobj.ImageURL,
-        
+        title:"Demo" ,
+        text:"Directive" ,
+        scheme:"light" 
        },
+       cssClass: 'ion-img-viewer'
        
       
     });
