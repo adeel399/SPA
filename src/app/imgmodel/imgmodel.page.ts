@@ -25,12 +25,16 @@ export class ImgmodelPage implements OnInit {
     private route: Router,
     public http: HttpClient,
     public popoverController: PopoverController) { 
-    this.imgs=this.navParams.get('photos');
-    this.firstimg=this.navParams.get('first');
-    console.log(this.firstimg)
+    this.imgs=this.navParams.get('src');
+    
+    console.log(this.imgs)
   }
 
   ngOnInit() {
+  }
+
+  close(){
+    this.modalController.dismiss();
   }
 
 }

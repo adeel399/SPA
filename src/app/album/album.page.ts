@@ -119,16 +119,11 @@ images:any=[];
   }
   
     const modal = await this.modalCtrl.create({
-      component: ViewerModalComponent,
+      component: ImgmodelPage,
       componentProps:{
-        src:galleryobj.ImageURL,
-        title:"Demo" ,
-        text:"Directive" ,
-        scheme:"light" 
+        src:arrayphoto,
        },
-       cssClass: 'ion-img-viewer'
        
-      
     });
  
     return await modal.present();
