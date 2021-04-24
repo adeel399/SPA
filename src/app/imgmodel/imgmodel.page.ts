@@ -10,9 +10,9 @@ import { NavigationExtras, Router,ActivatedRoute } from '@angular/router';
 })
 export class ImgmodelPage implements OnInit {
   imgs: any;
+  id: any;
   User: any;
-  slideOpts = {
-    initialSlide: 1,
+  slideOpts:any = {
     speed: 400
   };
   firstimg: any;
@@ -24,10 +24,12 @@ export class ImgmodelPage implements OnInit {
     public modalController:ModalController,
     private route: Router,
     public http: HttpClient,
-    public popoverController: PopoverController) { 
-    this.imgs=this.navParams.get('src');
-    
-    console.log(this.imgs)
+    public popoverController: PopoverController
+  ) { 
+    this.imgs = this.navParams.get('src');
+    this.id = this.navParams.get('id');
+    this.slideOpts['initialSlide'] = this.id
+    console.log(this.slideOpts)
   }
 
   ngOnInit() {

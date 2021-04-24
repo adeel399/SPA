@@ -1,22 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button  color="secondary" (click)="close()">
+      <ion-button color="secondary" (click)="close()">
         <ion-icon name="close"></ion-icon>
-    </ion-button>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-
-
-   <ion-slides >
-   <ion-slide *ngFor="let img of imgs let i = index;">
-    <img  src="{{img.url.ImageURL}}" activeIndex="0">
-   </ion-slide>
-    </ion-slides>
-  
-
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let img of imgs let i = index;">
+      <img src="{{img.url.ImageURL}}" />
+    </ion-slide>
+  </ion-slides>
 </ion-content>
 <ion-footer>
   <p>Uploaded by Adeel</p>
