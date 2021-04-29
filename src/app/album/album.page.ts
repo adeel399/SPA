@@ -132,6 +132,9 @@ export class AlbumPage implements OnInit {
       arrayphoto.push({
         url: this.gallerylist[i],
         type: 'string',
+        user:this.gallerylist[i].OwnerName,
+        userdp:this.gallerylist[i].OwnerProfilePicture,
+        upload:this.gallerylist[i].Uploaded,
       });
     }
 

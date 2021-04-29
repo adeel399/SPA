@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController,PopoverController,AlertController ,NavParams,LoadingController, ModalController} from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController,PopoverController,AlertController ,NavParams,LoadingController, ModalController,IonSlides } from '@ionic/angular';
 import {  HttpHeaders, HttpErrorResponse,HttpClient } from '@angular/common/http';
 import { NavigationExtras, Router,ActivatedRoute } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { NavigationExtras, Router,ActivatedRoute } from '@angular/router';
   styleUrls: ['./imgmodel.page.scss'],
 })
 export class ImgmodelPage implements OnInit {
+  @ViewChild(IonSlides) slides: IonSlides;
   imgs: any;
   id: any;
   User: any;
@@ -27,13 +28,21 @@ export class ImgmodelPage implements OnInit {
     public popoverController: PopoverController
   ) { 
     this.imgs = this.navParams.get('src');
+    
     this.id = this.navParams.get('id');
     this.slideOpts['initialSlide'] = this.id
-    console.log(this.slideOpts)
+    console.log(this.imgs);
+   
   }
 
+  ionViewWillEnter(){
+    this.slides.update();
+ }
+  
   ngOnInit() {
+  
   }
+ 
 
   close(){
     this.modalController.dismiss();

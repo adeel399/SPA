@@ -152,5 +152,11 @@ export class ProfilePage implements OnInit {
     });
     return await modal.present();
   }
+  
+  logout(){
+    localStorage.removeItem("userid");
+    localStorage.removeItem("playerid");
+    this.navCtrl.navigateRoot("");
+  }
 
 }

@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   dataa:any;
   eaddres:any;
   pass:any;
+  remberme:any;
   loginForm: FormGroup;
   reactiveSubmitted: boolean = false;
   responseError: string = '';
@@ -52,15 +53,18 @@ export class LoginPage implements OnInit {
 
     ionViewWillEnter() {
       this.menuController.enable(false);
+      if(localStorage.getItem("email") !== null && localStorage.getItem("password") !== null){
+        this.eaddres = localStorage.getItem("email");
+        this.pass = localStorage.getItem("password");
+      }
     }  
   ngOnInit() {
-  //   if(localStorage.getItem("usertype") == '2' || localStorage.getItem("usertype") == '3'){
-  //     console.log("admin");
-  //     this.navCtrl.navigateForward('/tabs/tab1');
-  //   }else if( localStorage.getItem("usertype") == '1'){
-  //     console.log("user");
-  //    this.navCtrl.navigateForward('/tabs/tab6');
-  // }
+    if(localStorage.getItem("userid") !== null){
+       
+      this.navCtrl.navigateForward('/tabs/tab1');
+    }
+    
+
   }
 
   register(){
@@ -72,6 +76,7 @@ export class LoginPage implements OnInit {
   }
   
   home(){
+    console.log("rememberMe: ",this.remberme);
     this.reactiveSubmitted = true;
     let form = this.loginForm;
   this.dataa= {
@@ -87,14 +92,21 @@ export class LoginPage implements OnInit {
   
   this.http.post(this.rootapi+'login',this.dataa, this.httpOptions).subscribe( async (data:any) => {
    console.log(data);
+   
   var mydata= data;
   if(mydata.ID > 0){
     localStorage.setItem("usertype",mydata.UserType);
     localStorage.setItem("userid",mydata.ID);
+    if(this.remberme == true){
+      localStorage.setItem("email",this.eaddres);
+      localStorage.setItem("password",this.pass);
+    }
     if(mydata.UserType == "2"){
       this.eaddres="";
       this.pass ="";
+     
       this.navCtrl.navigateForward('/tabs/tab1');
+
     }
     else if(mydata.UserType == "1"){
       this.eaddres="";
@@ -112,5 +124,7 @@ export class LoginPage implements OnInit {
   } 
   });
 }
+
+
 
 }

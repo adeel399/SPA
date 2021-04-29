@@ -11,12 +11,45 @@ ion-header{
 
 ion-content{
     --background: black;
-    img{
+    .fullimg{
         max-height: 70px;
         min-height: 500px;
         min-width: 100%;
-        margin-top: 16%;
+        
         max-width: 100%;
+    }
+    .upload{
+        text-align: left;
+        color: #bfbfbf;
+        margin: 0;
+    }
+    ion-card{
+        margin: 0px;
+    padding: 0;
+    background: black;
+    ion-card-header{
+        margin: 0;
+        padding: 0;
+    }
+    }
+    .username{
+       // position: absolute;
+        color: white;
+        margin: 0;
+        text-align: left;
+        margin-top: 0%;
+        // margin-top: -58%;
+        // margin-left: -56%;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .dp{
+        width: 50px;
+        height: 50px;
+      //  margin-left: -80%;
+        border-radius: 50px;
+      //  position: absolute;
+      //  margin-top: -65%;
     }
 }
 ion-footer{

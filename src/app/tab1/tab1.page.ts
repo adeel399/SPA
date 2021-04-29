@@ -220,4 +220,15 @@ export class Tab1Page {
 
     await alert.present();
   }
+
+  pressed(){
+ console.log("pressed");
+  }
+  active(){
+    console.log("active");
+  }
+  released(){
+    console.log("released");
+  }
+  
 }

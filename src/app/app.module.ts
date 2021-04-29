@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG  } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-
+import { IonicGestureConfig } from './gesture/IonicGestureConfig'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,7 +19,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     Camera,
     PhotoViewer,
     SocialSharing,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig}
   ],
   bootstrap: [AppComponent],
 })
