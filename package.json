@@ -23,6 +23,7 @@
     "@ionic-native/core": "^5.32.1",
     "@ionic-native/photo-viewer": "^5.32.1",
     "@ionic-native/social-sharing": "^5.32.1",
+    "@ionic-native/stripe": "^5.33.0",
     "@ionic/angular": "^5.6.4",
     "@types/hammerjs": "^2.0.39",
     "cordova-android": "9.0.0",
@@ -53,6 +54,7 @@
     "cordova-plugin-ionic-webview": "^4.2.1",
     "cordova-plugin-splashscreen": "^5.0.4",
     "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-stripe": "^1.5.3",
     "cordova-plugin-whitelist": "^1.3.4",
     "cordova-plugin-x-socialsharing": "^6.0.3",
     "es6-promise-plugin": "^4.2.2",
@@ -87,7 +89,8 @@
       "cordova-plugin-x-socialsharing": {},
       "cordova-plugin-androidx": {},
       "cordova-plugin-androidx-adapter": {},
-      "com-sarriaroman-photoviewer": {}
+      "com-sarriaroman-photoviewer": {},
+      "cordova-plugin-stripe": {}
     },
     "platforms": [
       "android"

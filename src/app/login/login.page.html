@@ -12,8 +12,8 @@
     <ion-item>
       <ion-label position="floating">Email Address</ion-label>
       <ion-input type="email" formControlName="email" required="true" placeholder="Email Address"  [(ngModel)]="eaddres"></ion-input>
-      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
-      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('email') && reactiveSubmitted" no-margin>{{errorMessages.email.email}}</ion-label>
+      <!-- <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.email.required}}</ion-label>
+      <ion-label error-field color="danger" *ngIf="loginForm.controls.email.hasError('email') && reactiveSubmitted" no-margin>{{errorMessages.email.email}}</ion-label> -->
       <ion-button class="iconimg" slot="end" fill="clear">
        
         <ion-img src="assets/imgs/user.png"></ion-img>
@@ -22,7 +22,7 @@
     <ion-item >
       <ion-label position="floating">Password</ion-label>
       <ion-input type="password" formControlName="password" required="true" placeholder="Password" [(ngModel)]="pass"></ion-input>
-      <ion-label error-field color="danger" *ngIf="loginForm.controls.password.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.password.required}}</ion-label>
+      <!-- <ion-label error-field color="danger" *ngIf="loginForm.controls.password.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.password.required}}</ion-label> -->
       <ion-button class="iconimg" slot="end" fill="clear">
        
         <ion-img src="assets/imgs/pass.png"></ion-img>

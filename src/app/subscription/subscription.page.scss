@@ -3,7 +3,7 @@ ion-header{
     font-family: "Myriad Pro";
     ion-title{
         color: white;
-        text-align: center;
+        //text-align: center;
     }
     ion-toolbar.toolbar-title-default.md.in-toolbar.hydrated {
         --background: linear-gradient(155deg,#245527 , #2aa02d);
@@ -38,6 +38,12 @@ ion-header{
    
 }
 ion-content{
+    .remaining{
+        color: black;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 5%;
+    }
     h3{
         margin: 0;
     color: white;
@@ -45,10 +51,31 @@ ion-content{
     p{
         margin: 0;
     }
-    ion-card{
-        width: 250px;
-    height: 400px;
-    overflow: scroll;
+    ion-radio{
+    float: right;
+    margin-top: 20%;
+    --color-checked: #245527;
+    }
+    .packcredit{
+    font-weight: bold;
+    margin-top: 3%;
+    color: black;
+    }
+    .cost{
+        color: #4caf50;
+    }
+    .datetime{
+      color: gray;
+    }
+    ion-label{
+    font-weight: bold;
+    font-size: 20px;
+    }
+    .historycost{
+        color: #245527;
+        float: right;
+        font-size: 20px;
+        margin-top: 17%;
     }
    .free{
     background: #002b38;
@@ -104,4 +131,14 @@ ion-content{
     background: #f4f5f8;
     color: black;
    }
+   ion-card{
+    background: linear-gradient(
+        155deg
+        ,#d1d1d1 , #ecebeb);
+            border-radius: 38px;
+            padding: 3%;
+            padding-left: 4%;
+            padding-right: 0%;
+            margin-bottom: 2%;
+}
 }

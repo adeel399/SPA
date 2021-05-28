@@ -31,6 +31,7 @@ export class CreatepopupPage implements OnInit {
   };
   obj: { Name: string; OwnerID: string; };
   album: string;
+  sharecode: string;
   constructor(
     public alertController:AlertController,
     private formBuilder: FormBuilder,
@@ -56,32 +57,30 @@ export class CreatepopupPage implements OnInit {
   ngOnInit() {
   }
  async addalbum(){
-  // let loading =  await this.loadingController.create({
-  //   cssClass: 'my-custom-class',
-  //   message: 'Please wait...',
-  //   duration: 2000
-  // });
-  // this.obj={
-  //   Name:this.album,
-  //   OwnerID:this.userid
-  //  }
-  //  this.http.post(this.rootapi+'album',this.obj, this.httpOptions).subscribe( async (data:any) => {
-  //   console.log(data);
-  //   if(data.Text == "Album Created Successfully"){
-  //     let alert =   await this.alertController.create({
-  //       header: 'Status',
-  //       message: 'Album Created Successfully',
-  //       buttons: ['Dismiss']
-  //     });
-  //     this.modalController.dismiss({
-  //       'dismissed': true
-  //     });
-  //     await alert.present();
+  let loading =  await this.loadingController.create({
+    cssClass: 'my-custom-class',
+    message: 'Please wait...',
+    duration: 2000
+  });
+  console.log(this.sharecode);
+  this.http.get(this.rootapi+'share?uid='+this.userid+'&shid='+this.sharecode,this.httpOptions).subscribe(async (data:any) => {
+    console.log(data);
+
+    if(data.Text == "Share Code Redeemed Successfully. This Album's Admin Will Approve Your Request Shortly."){
+      let alert =   await this.alertController.create({
+        header: 'Status',
+        message: 'Share Code Redeemed Successfully. This Albums Admin Will Approve Your Request Shortly.',
+        buttons: ['Dismiss']
+      });
+      this.modalController.dismiss({
+        'dismissed': true
+      });
+      await alert.present();
      
-  //   }
+    }
     
-  //  });
-  //  await loading.present();
+   });
+   await loading.present();
  }
 
 }

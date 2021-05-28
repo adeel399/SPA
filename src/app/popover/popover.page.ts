@@ -15,19 +15,42 @@ export class PopoverPage implements OnInit {
   albumid: any;
   albumlist: any;
   dataa: { AlbumID: any; };
+  shareallow: any;
+  Owner: any;
+  uploadallow: any;
+  pendinguserapprove: any;
+  pendingimageapprove: any;
+  albumowner: any;
+  albumownerpic: any;
+  allowexp: any;
   constructor(private navCtrl:NavController,
     public alertController: AlertController,
     public navParams : NavParams,
     public loadingController: LoadingController,
     private activatedRoute: ActivatedRoute,
     public modalController:ModalController,
-    private route: Router,
+    private router: Router,
     public http: HttpClient,
     public popoverController: PopoverController,
     ) {
       this.userid = localStorage.getItem("userid");
       this.albumid=this.navParams.get('custom_id');
-      
+
+      this.Owner=this.navParams.get('Owner');
+      console.log(this.Owner);
+      this.shareallow=this.navParams.get('Allowshare');
+      this.uploadallow=this.navParams.get('ALlowupload');
+      this.pendingimageapprove=this.navParams.get('pendingimg');
+      this.pendinguserapprove=this.navParams.get('pendinguser');
+      this.albumowner=this.navParams.get('ownername');
+      this.albumownerpic=this.navParams.get('ownerdppic');
+      this.allowexp=this.navParams.get('Allowexp');
+      console.log(this.Owner);
+      console.log(this.shareallow);
+      console.log(this.albumid);
+      console.log(this.albumowner);
+      console.log(this.albumownerpic);
+      console.log(this.allowexp);
      }
      httpOptions = {
       headers: new HttpHeaders({
@@ -39,49 +62,74 @@ export class PopoverPage implements OnInit {
   }
 
   async userlist(){ 
-    this.route.navigate(['/tabs/tab1/User-list', {modelName: this.albumid,}]);
+    this.router.navigate(['/tabs/tab1/User-list', {modelName: this.albumid,}]);
     await this.popoverController.dismiss({ data:"userlist" });
+  }
+
+  albumview(id,owner,ownerpic,ownername){
+    this.popoverController.dismiss({
+      'dismissed': true
+    });
+    this.router.navigate(['/tabs/tab1/Album', {modelName: id,modelName4:owner,modelName2:ownerpic,modelName3:ownername}]);
   }
 
   async share(){
     this.popoverController.dismiss({
       'dismissed': true
     });
-    this.dataa= {
-      AlbumID:this.albumid,
-    };
-  console.log(this.dataa);
-    this.http.post(this.rootapi+'share',this.dataa, this.httpOptions).subscribe( async (data:any) => {
-      console.log(data);
-      if(data.ID == 0){
-        let alert =   await this.alertController.create({
-          header: 'Error',
-          message: 'Sharing Link Creation Failed',
-          buttons: ['Dismiss']
-        });
+
+    const modal = await this.modalController.create({
+      component: ShareviaPage,
+      componentProps:{
+        albumid:this.albumid
+       },
+      cssClass: 'share-via'
+    });
+    modal.onDidDismiss().then(async (dataReturned) => {
+     
+      console.log("here");
+     
+    
+    });
+   
+    
+    return await modal.present();
+
+  //   this.dataa= {
+  //     AlbumID:this.albumid,
+  //   };
+  // console.log(this.dataa);
+  //   this.http.post(this.rootapi+'share',this.dataa, this.httpOptions).subscribe( async (data:any) => {
+  //     console.log(data);
+  //     if(data.ID == 0){
+  //       let alert =   await this.alertController.create({
+  //         header: 'Error',
+  //         message: 'Sharing Link Creation Failed',
+  //         buttons: ['Dismiss']
+  //       });
         
-        await alert.present();
+  //       await alert.present();
        
-      }
-      else if(data.ID == 1){
-        const modal = await this.modalController.create({
-          component: ShareviaPage,
-          componentProps:{
-            shareMsg:data.Text
-           },
-          cssClass: 'share-via'
-        });
-        modal.onDidDismiss().then(async (dataReturned) => {
+  //     }
+  //     else if(data.ID == 1){
+  //       const modal = await this.modalController.create({
+  //         component: ShareviaPage,
+  //         componentProps:{
+  //           shareMsg:data.Text
+  //          },
+  //         cssClass: 'share-via'
+  //       });
+  //       modal.onDidDismiss().then(async (dataReturned) => {
          
-          console.log("here");
+  //         console.log("here");
          
         
-        });
+  //       });
        
         
-        return await modal.present();
-      }
-  });
+  //       return await modal.present();
+  //     }
+  // });
    
     
   }

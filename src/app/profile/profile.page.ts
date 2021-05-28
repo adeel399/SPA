@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  HttpHeaders, HttpErrorResponse,HttpClient, } from '@angular/common/http';
-import { NavController,LoadingController,AlertController,ActionSheetController,ModalController} from '@ionic/angular';
+import { NavController,LoadingController,AlertController,ActionSheetController,ModalController, ToastController} from '@ionic/angular';
 import { NavigationExtras, Router,ActivatedRoute } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AddcardpopupPage } from '../addcardpopup/addcardpopup.page';
@@ -30,9 +30,14 @@ export class ProfilePage implements OnInit {
   obj: { ID: string; ProfilePicture64: any; };
   albumlist: any;
   cardlist: any;
+  totalalbum: any;
+  cardApi: { UserID: string; ID: any; Status: number; };
+  cardlistlenght: number;
+  sharealbumcount: any;
   constructor(public http: HttpClient,
     public loadingController: LoadingController,
     public actionSheetController: ActionSheetController,
+    public toastController: ToastController,
     public alertController:AlertController,
     public modalController:ModalController,
     public camera: Camera,
@@ -63,11 +68,14 @@ export class ProfilePage implements OnInit {
   this.email=data.EmailAddress;
   this.name=data.Name;
   this.pass=data.Password;
+  this.sharealbumcount=data.Credits;
     });
 
     this.http.get(this.rootapi+'album?uid='+this.userid,this.httpOptions).subscribe(async (data:any) => {
       console.log(data);
      this.albumlist=data.Albums;
+     this.totalalbum=data.MyAlbumCount;
+     
      
     });
     this.http.get(this.rootapi+'token?uid='+this.userid,this.httpOptions).subscribe(async (data:any) => {
@@ -143,15 +151,82 @@ export class ProfilePage implements OnInit {
 
 
   subscribe(){
-    this.navCtrl.navigateForward('/tabs/tab2/subscription-packages');      
+    this.router.navigate(['/tabs/tab2/subscription-packages', {
+      modelName: this.sharealbumcount,
+    }]);
+      
   }
   async addcard(){
     const modal = await this.modalController.create({
       component: AddcardpopupPage,
       cssClass: 'booking-modal'
     });
+    modal.onDidDismiss().then(async (dataReturned) => {
+     
+      console.log("here");
+      this.http.get(this.rootapi+'token?uid='+this.userid,this.httpOptions).subscribe(async (data:any) => {
+        console.log(data);
+       this.cardlist=data.Tokens;
+       
+      });
+    
+    
+    });
     return await modal.present();
   }
+
+  async deletecard(cardID){
+    const alert = await this.alertController.create({
+      cssClass: 'Unordered Items In Your Basket',
+      header: 'Delete Card',
+      message: '<strong>Are Your Sure?"</strong>',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Cancel');
+          }
+        }, {
+          text: 'Yes Delete',
+          handler: async () => {
+            console.log('Delete');
+           
+            let loading =  await this.loadingController.create({
+              cssClass: 'my-custom-class',
+              message: 'Please wait...',
+              duration: 2000
+            });
+            this.cardApi = {
+              UserID:this.userid,
+              ID:cardID,
+              Status:-1
+            }
+            this.http.post(this.rootapi+'Token',this.cardApi,this.httpOptions).subscribe(async (data:any) => {
+              console.log(data);
+              await loading.present();
+            const toast = await this.toastController.create({
+            message: 'Card Removed Successfully',
+            duration: 2000
+            });
+  
+           toast.present();
+           this.http.get(this.rootapi+'token?uid='+this.userid,this.httpOptions).subscribe(async (data:any) => {
+            console.log(data);
+           this.cardlist=data.Tokens;
+           this.cardlistlenght = Object.keys(this.cardlist).length;
+          });
+          });
+         
+        }
+      }
+    ]
+  });
+  await alert.present();
+        
+  }
+
   
   logout(){
     localStorage.removeItem("userid");

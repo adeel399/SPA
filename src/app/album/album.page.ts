@@ -47,6 +47,21 @@ export class AlbumPage implements OnInit {
   img: string;
   element: any;
   longpressactive: boolean;
+  multipleselect =[];
+  chkboxID: any;
+  multiarray_length: number;
+  multiarray: number;
+  ownerIS: string;
+  dataa: { ID: number; IDs: any[]; };
+  allowshare: string;
+  allowupload: string;
+  pendingimg: string;
+  pendinguser: string;
+  allowexp: string;
+  data1: { ID: any; Text: any; AuthorID: string; };
+  desobj: any;
+
+
   constructor(
     public modalCtrl: ModalController,
     private activatedRoute: ActivatedRoute,
@@ -60,10 +75,20 @@ export class AlbumPage implements OnInit {
     public loadingController: LoadingController,
     public popoverController: PopoverController
   ) {
+    this.multiarray=Object.keys(this.multipleselect).length;
     this.userid = localStorage.getItem('userid');
+    console.log("userid",this.userid);
+    
     this.AlbumID = this.activatedRoute.snapshot.paramMap.get('modelName');
     this.ownername = this.activatedRoute.snapshot.paramMap.get('modelName3');
-    this.ownerpic = this.activatedRoute.snapshot.paramMap.get('modelName2');
+    this.ownerpic = this.activatedRoute.snapshot.paramMap.get('modelName2')
+    this.ownerIS = this.activatedRoute.snapshot.paramMap.get('modelName4');
+    console.log("ownerid",this.ownerIS);
+    this.allowshare = this.activatedRoute.snapshot.paramMap.get('modelName5');
+    this.allowupload = this.activatedRoute.snapshot.paramMap.get('modelName6');
+    this.pendingimg = this.activatedRoute.snapshot.paramMap.get('modelName7');
+    this.pendinguser = this.activatedRoute.snapshot.paramMap.get('modelName8');
+    this.allowexp = this.activatedRoute.snapshot.paramMap.get('modelName9');
     this.images = [
       'assets/imgs/a.jpg',
       'assets/imgs/1.jpg',
@@ -89,13 +114,178 @@ export class AlbumPage implements OnInit {
       duration: 2000,
     });
     this.http
-      .get(this.rootapi + 'image?aid=' + this.AlbumID, this.httpOptions)
+      .get(this.rootapi + 'image?aid=' + this.AlbumID+'&oid='+this.ownerIS, this.httpOptions)
       .subscribe(async (data: any) => {
         console.log(data);
         this.gallerylist = data.Images;
       });
     await loading.present();
   }
+
+  async addDescription(id){
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Add A Description To This Image ',
+      inputs: [
+        {
+          name: 'des',
+          type: 'text',
+          placeholder: 'Add Description..'
+        },
+       
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Submit',
+          handler: async (alertData) => {
+            console.log('Confirm Ok');
+            if(alertData.des != null && alertData.des.length > 0){
+              let loading =  await this.loadingController.create({
+                cssClass: 'my-custom-class',
+                message: 'Please wait...',
+                duration: 2000
+              });
+              this.data1= {
+                ID:id,
+                Text:alertData.des,
+                AuthorID:this.userid
+              };
+            console.log(this.data1);
+              this.http.post(this.rootapi+'description',this.data1, this.httpOptions).subscribe( async (data:any) => {
+            console.log(data);
+            if(data.Text =="Description Added Successfully"){
+              let alert =   await this.alertController.create({
+                header: 'Success',
+                message: 'Description Added Successfully',
+                buttons: ['Dismiss']
+              });
+              await alert.present();
+            }
+            this.http.get(this.rootapi + 'image?aid=' + this.AlbumID+'&oid='+this.ownerIS, this.httpOptions).subscribe(async (data: any) => {
+            console.log(data);
+            this.gallerylist = data.Images;
+             });
+              await alert.present();
+             
+            });
+            await loading.present();
+            }else{
+              let alert =   await this.alertController.create({
+                header: 'Error',
+                message: 'Please Enter Description',
+                buttons: ['Dismiss']
+              });
+              await alert.present();
+              
+            }
+
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+  }
+
+  checkboxchange(event,ID,albmID){
+    console.log("Event",event.detail.checked);
+     this.chkboxID=ID;
+    if(event.detail.checked == true){
+      this.multipleselect.push(this.chkboxID);
+    }else{
+     let index = this.multipleselect.indexOf(this.chkboxID);
+     this.multipleselect.splice(index, 1);
+    }
+    console.log(this.multipleselect);
+    console.log(Object.keys(this.multipleselect).length);
+   
+     }
+
+     async multipleimgdelete(){
+      this.dataa= {
+        ID:this.AlbumID,
+        IDs:this.multipleselect
+      };
+    console.log(this.dataa);
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Delete Selected Images ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          },
+        },
+        {
+          text: 'Delete All',
+          handler: async () => {
+          let loading = await this.loadingController.create({
+          cssClass: 'my-custom-class',
+          message: 'Please wait...',
+          duration: 2000,
+    });
+    this.http.put(this.rootapi+'image',this.dataa, this.httpOptions).subscribe( async (data:any) => {
+      console.log(data);
+      this.gallerylist = data.Images;
+        });
+    await loading.present();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+     
+     }
+
+    async approveimg(imgid,albmid){
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Confirm!',
+        message: 'Approve this Image?',
+        buttons: [
+          {
+            text: 'No',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            },
+          },
+          {
+            text: 'Yes',
+            handler: async () => {
+            let loading = await this.loadingController.create({
+            cssClass: 'my-custom-class',
+            message: 'Please wait...',
+            duration: 2000,
+      });
+      this.http.get(this.rootapi + 'image?aid=' +albmid+'&oid='+this.ownerIS+'&iid='+imgid, this.httpOptions)
+        .subscribe(async (data: any) => {
+          console.log(data);
+          this.gallerylist = data.Images;
+        });
+      await loading.present();
+            },
+          },
+        ],
+      });
+  
+      await alert.present();
+      
+    }
 
   ngOnInit() {}
   async presentPopover(event: any) {
@@ -104,6 +294,14 @@ export class AlbumPage implements OnInit {
       cssClass: 'my-custom-class',
       componentProps: {
         custom_id: this.AlbumID,
+        Owner:this.ownerIS,
+        Allowshare:this.allowshare,
+        ALlowupload:this.allowupload,
+        pendingimg:this.pendingimg,
+        pendinguser:this.pendinguser,
+        ownername:this.ownername,
+        ownerdppic:this.ownerpic,
+        Allowexp:this.allowexp
       },
       event: event,
       translucent: true,
@@ -128,6 +326,8 @@ export class AlbumPage implements OnInit {
     // this.photoViewer.show(galleryobj.ImageURL);
     let arrayphoto: any = [], id: number = 0;
     for (var i = 0; i < this.gallerylist.length; i++) {
+      this.desobj=this.gallerylist[i].Description;
+      console.log(this.desobj);
       if(this.gallerylist[i]['ID'] == galleryobj.ID) id = i
       arrayphoto.push({
         url: this.gallerylist[i],
@@ -135,6 +335,9 @@ export class AlbumPage implements OnInit {
         user:this.gallerylist[i].OwnerName,
         userdp:this.gallerylist[i].OwnerProfilePicture,
         upload:this.gallerylist[i].Uploaded,
+        Text:this.gallerylist[i].Text,
+        authername:this.gallerylist[i].AuthorName,
+        autherimg:this.gallerylist[i].AuthorProfilePicture
       });
     }
 
@@ -145,7 +348,17 @@ export class AlbumPage implements OnInit {
         id: id
       },
     });
-
+    modal.onDidDismiss().then(async (dataReturned) => {
+     
+      console.log("here");
+      this.http
+      .get(this.rootapi + 'image?aid=' + this.AlbumID+'&oid='+this.ownerIS, this.httpOptions)
+      .subscribe(async (data: any) => {
+        console.log(data);
+        this.gallerylist = data.Images;
+      });
+    
+    });
     return await modal.present();
   }
 
@@ -257,15 +470,10 @@ export class AlbumPage implements OnInit {
                   message: 'Please wait...',
                   duration: 2000,
                 });
-                this.http
-                  .get(
-                    this.rootapi + 'image?aid=' + this.AlbumID,
-                    this.httpOptions
-                  )
-                  .subscribe(async (data: any) => {
-                    console.log(data);
-                    this.gallerylist = data.Images;
-                  });
+                this.http.get(this.rootapi + 'image?aid=' + this.AlbumID+'&oid='+this.ownerIS,this.httpOptions).subscribe(async (data: any) => {
+                 console.log(data);
+                this.gallerylist = data.Images;
+                }); 
                 await loading.present();
               });
             await loading.present();

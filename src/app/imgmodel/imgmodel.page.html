@@ -16,7 +16,7 @@
    
     <ion-slide *ngFor="let img of imgs let i = index;">
    
-        <ion-card>
+        <!-- <ion-card>
           <ion-card-header>
             <ion-row>
               <ion-col size="2">
@@ -28,12 +28,89 @@
               </ion-col>
             </ion-row>
           </ion-card-header>
+          <div class="whbg">
           <img src="{{img.url.ImageURL}}" class="fullimg" />
-         
+          <ion-row *ngIf="img.Text !== ''" class="bg">
+            <ion-col size="2" class="ovrly">
+              <img src="{{img.autherimg}}" class="dp auther">
+            </ion-col>
+            <ion-col class="ovrly">
+              <p class="username sml">{{img.authername}}</p>
+              <p class="upload">{{img.Text}}</p>
+            </ion-col>
+            <ion-col size="2" class="ovrly" (click)="deleteDes(img.url.ID)">
+              <ion-icon name="close-circle" class="cls"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="img.Text == '' && img.url.OwnerID == userid" class="bg">
+            <ion-col class="ovrly">
+              <p class="upload">Would you like to add image description? </p>
+            </ion-col>
+            <ion-col size="2" class="ovrly" (click)="addDes(img.url.ID)">
+              <ion-icon name="add-circle" class="add"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </div>
           
-        </ion-card>
+        </ion-card> -->
        
-      
+
+        <ion-card class="topcrd">
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="2">
+                <img src="{{img.url.OwnerProfilePicture}}" class="dp">
+              </ion-col>
+              <ion-col>
+                <p class="username">{{img.url.OwnerName}}</p>
+                <p class="upload">Uploaded On {{img.upload}}</p>
+                <ion-row *ngIf="img.Text !== ''">
+                 
+                  <ion-col>
+                   
+                    <p class="upload1">{{img.Text}}</p>
+                  </ion-col>
+                  <ion-col size="2" (click)="deleteDes(img.url.ID)">
+                    <ion-icon name="close-circle" class="cls"></ion-icon>
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="img.Text == '' && img.url.OwnerID == userid" >
+                  <ion-col >
+                    <p class="upload1">Add Image Description? </p>
+                  </ion-col>
+                  <ion-col size="2"  (click)="addDes(img.url.ID)">
+                    <ion-icon name="add-circle" class="add"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+         </ion-card>
+         <br>
+          <img src="{{img.url.ImageURL}}" class="fullimg" />
+          <br>
+        <!-- <ion-card class="bottomcrd">
+          <ion-row *ngIf="img.Text !== ''" class="bg">
+            <ion-col size="2" class="ovrly">
+              <img src="{{img.autherimg}}" class="dp auther">
+            </ion-col>
+            <ion-col class="ovrly">
+              <p class="username sml">{{img.authername}}</p>
+              <p class="upload">{{img.Text}}</p>
+            </ion-col>
+            <ion-col size="2" class="ovrly" (click)="deleteDes(img.url.ID)">
+              <ion-icon name="close-circle" class="cls"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="img.Text == '' && img.url.OwnerID == userid" class="bg">
+            <ion-col class="ovrly">
+              <p class="upload">Would you like to add image description? </p>
+            </ion-col>
+            <ion-col size="2" class="ovrly" (click)="addDes(img.url.ID)">
+              <ion-icon name="add-circle" class="add"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card> -->
       
     </ion-slide>
     

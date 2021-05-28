@@ -3,7 +3,7 @@ ion-header{
     font-family: "Myriad Pro";
     ion-title{
         color: white;
-        text-align: center;
+        //text-align: center;
     }
     ion-toolbar.toolbar-title-default.md.in-toolbar.hydrated {
         --background: linear-gradient(155deg,#245527 , #2aa02d);
@@ -39,9 +39,20 @@ ion-header{
 }
 ion-content{
     ion-card{
-    padding: 8%;
+    padding: 5%;
     border-radius: 29px;
     background: linear-gradient(155deg,#2aa02d, #245527);
+    .remove{
+    font-size: 30px;
+    color: white;
+    float: right;
+    margin-top: -3%;
+    }
+    }
+    .plzselc{
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
     }
     p{
         margin: 0%;
@@ -51,7 +62,7 @@ ion-content{
         width: 40px;
     }
     .digit{
-        font-size: 30px;
+        font-size: 23px;
     }
     ion-col{
         padding: 0;
@@ -73,5 +84,14 @@ ion-content{
         height: 47px;
         --background: linear-gradient(155deg,#2aa02d, #245527);
     }
-
+    .noitem{
+        text-align: center;
+        color: #c8c8c8;
+        margin-top: 52%;
+        font-size: 20px;
+        padding: 5%;
+       }
+       .mess {
+        border: 2px solid #080808;
+      }
 }

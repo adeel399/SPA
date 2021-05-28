@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button color="secondary" (click)="capture()">
+      
+      <ion-button  color="secondary" *ngIf="multipleselect?.length == 0 && ownerIS =='1'" (click)="capture()">
         <ion-icon name="add-outline"></ion-icon>
-      </ion-button>
+    </ion-button>
+    <ion-button  color="secondary" *ngIf="multipleselect?.length == 0 && ownerIS =='0' && allowupload == '1'" (click)="capture()">
+      <ion-icon name="add-outline"></ion-icon>
+  </ion-button>
+    <ion-button  color="secondary" *ngIf="multipleselect?.length > 0" (click)="multipleimgdelete()">
+      <ion-icon name="trash-bin"></ion-icon>
+  </ion-button>
     </ion-buttons>
     <ion-row>
       <ion-col size="2">
@@ -34,7 +41,10 @@
     <ion-col size="8">
       <p class="albumtitle">{{ownername}}</p>
     </ion-col>
-    <ion-col (click)="presentPopover($event)">
+    <ion-col *ngIf="ownerIS=='0' && allowexp=='1'" (click)="presentPopover($event)">
+      <ion-icon name="ellipsis-vertical" class="menu"></ion-icon>
+    </ion-col>
+    <ion-col *ngIf="ownerIS== '1'" (click)="presentPopover($event)">
       <ion-icon name="ellipsis-vertical" class="menu"></ion-icon>
     </ion-col>
   </ion-row>
@@ -42,12 +52,18 @@
   <div class="pins">
     <div class="pin" *ngFor="let gallary of gallerylist;let i =index ">
       <ion-card>
+        <ion-checkbox  class="cam1" (ionChange)="checkboxchange($event,gallary.ID,gallary.AlbumID)"></ion-checkbox>
         <ion-icon
-          name="trash"
+          name="close-circle"
           class="cam"
+          *ngIf="ownerIS == '1'"
           (click)="delete(gallary.ID,gallary.AlbumID)"
         ></ion-icon>
         <img src="{{gallary.ImageURL}}" (click)="openViewer(gallary)" />
+        <ion-icon name="bowling-ball" *ngIf="gallary.Approved == '0'" class="orngball" 
+        (click)="approveimg(gallary.ID,gallary.AlbumID)"></ion-icon>
+        <ion-icon name="chatbubble-ellipses" *ngIf="gallary.OwnerID == userid" (click)="openViewer(gallary)"  class="addtext" 
+        ></ion-icon>
       </ion-card>
     </div>
   </div>

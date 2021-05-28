@@ -4,33 +4,70 @@
 
 
 
-  <div>
-    <ion-list >
-      <ion-item (click)="whatsapp()">
-        <ion-col size="3">
-          <ion-icon class="linkedin" name="logo-whatsapp"></ion-icon>
+  <div >
+ 
+<ion-list class="ion-padding-horizontal">
+  <ion-row>
+    <ion-col size="2"></ion-col>
+    <ion-col size="2">
+     <img src="assets/imgs/coin.png">
+    </ion-col>
+    <ion-col >
+      <p >Share Credits: {{credit}}</p>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
+  <div *ngIf="ownerID=='1'">
+  <ion-item >
+    <ion-label>Album Sharing</ion-label>
+    <ion-toggle [(ngModel)]="allowshare" [checked]="allowshare" (ionChange)="Allowsharechange($event)" ></ion-toggle>
+  </ion-item>
+  <ion-item *ngIf="allowshare=='1'">
+    <ion-label>Allow Others To Upload</ion-label>
+    <ion-toggle [(ngModel)]="allowupload" [checked]="allowupload" (ionChange)="Allowuploadchange($event)"></ion-toggle>
+  </ion-item>
+  <ion-item *ngIf="allowupload=='1'">
+    <ion-label>Preapprove Uploads</ion-label>
+    <ion-toggle [(ngModel)]="preapprove" [checked]="preapprove" (ionChange)="AllowpreApprovechange($event)"></ion-toggle>
+  </ion-item>
+  <ion-item *ngIf="allowshare=='1'">
+    <ion-label>Allow Others To Share</ion-label>
+    <ion-toggle [(ngModel)]="expshare" [checked]="expshare" (ionChange)="Allowexpsharechange($event)"></ion-toggle>
+  </ion-item>
+  </div>
+  <ion-row>
+    <ion-col>
+      <p class="MSG" >{{sharemsg}}</p>
+    </ion-col>
+    <ion-col size="2" *ngIf="sharecodelength >'0'">
+      <div   (click)="toggleShowPassword(i)">
+        <ion-icon *ngIf="showEye " name="arrow-down-outline"  class="expand" slot="icon-only"></ion-icon>
+        <ion-icon *ngIf="!showEye " name="arrow-up-outline" class="expand" slot="icon-only"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <div  *ngIf="currentDisplayIndex==i">
+    <ion-card  *ngFor="let codes of sharecodes">
+      <ion-row>
+        <ion-col size="8" (click)="favalbum(business.ID)">
+        <p class="albumtitle"><span>Code:</span> {{codes.Code}}</p>
+        <p>{{codes.DisplayText}}</p>
+        </ion-col >
+        <ion-col size="2" (click)="share(codes.ShareText)">
+          <ion-icon name="share-social-outline" class="social"></ion-icon>
         </ion-col>
-        <ion-col>
-          <p class="tt">Share Via WhatsApp</p>
+        <ion-col size="2" (click)="delete(codes.Code)">
+          <ion-icon name="trash-bin-outline" class="delete"></ion-icon>
         </ion-col>
-      </ion-item>
-      <ion-item (click)="email()">
-        <ion-col size="3">
-          <ion-icon class="email" name="mail"></ion-icon>
-        </ion-col>
-        <ion-col>
-          <p class="tt">Share Via Email</p>
-        </ion-col>
-      </ion-item>
-      <ion-item lines="none" (click)="msg()">
-        <ion-col size="3">
-          <ion-icon class="msg" name="paper-plane"></ion-icon>
-        </ion-col>
-        <ion-col>
-          <p class="tt">Share Via Message</p>
-        </ion-col>
-      </ion-item>
-    </ion-list>
+      </ion-row>
+    </ion-card>
+</div>
+  <ion-button  shape="block"  (click)="generatecode()">
+    Generate Share Code
+  </ion-button>
+</ion-list>
+
     </div>
     
     

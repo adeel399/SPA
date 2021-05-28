@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="secondary" (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div  *ngFor="let img of imgs let i = index;">
+  
+  </div>
+  <ion-slides #slides [options]="slideOpts" >
+   
+    <ion-slide *ngFor="let img of imgs let i = index;">
+   
+        <ion-card>
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="2">
+                <img src="{{img.userdp}}" class="dp">
+              </ion-col>
+              <ion-col>
+                <p class="username">{{img.user}}</p>
+                <p class="upload">Uploaded On {{img.upload}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <img src="{{img.imglink}}" class="fullimg" />
+         
+          
+        </ion-card>
+       
+      
+      
+    </ion-slide>
+    
+  </ion-slides>
+</ion-content>
+

@@ -33,7 +33,7 @@
   <p class="albumtitle">{{name}}</p>
   </ion-col>
   <ion-col size="2" (click)="presentPopover($event)">
-    <p class="ion-text-end total">Total 5 Album</p>
+    <p class="ion-text-end total">Total {{totalalbum}} Album</p>
   </ion-col>
 </ion-row>
 <!-- <ion-label class="labl">Email Address</ion-label>
@@ -84,6 +84,7 @@
 <ion-slides  class="crd" [options]="slideOpts2">
   <ion-slide  *ngFor="let card of cardlist">
     <ion-card >
+      <ion-icon name="close-outline" class="remove" (click)="deletecard(card.ID)"></ion-icon>
       <img src="{{card.Brand}}">
       <ion-row>
         <ion-col class="ion-text-start digit">****</ion-col>
@@ -103,12 +104,12 @@
 <br>
 <ion-row>
   <ion-col size="10">
-    <p class="myalbum">My Subscriptions</p>
+    <p class="myalbum">Credit Packs</p>
   </ion-col>
   <ion-col size="2" (click)="subscribe()">
     <ion-icon name="ellipsis-vertical" class="menu"></ion-icon>
   </ion-col>
 </ion-row>
-<p class="des">Your current subscription plan is :<span class="myplan"> Free</span></p>
+<p class="des">Share Credits Remaining :<span class="myplan"> {{sharealbumcount}}</span></p>
 
 </ion-content>

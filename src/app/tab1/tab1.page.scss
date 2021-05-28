@@ -49,6 +49,23 @@ ion-content{
        
         --background: #277a2a;
     }
+    span{
+        
+        margin-top: -2%;
+    position: absolute;
+    margin-left: -1%;
+        ion-icon{
+        color: red;
+        font-size: 10px;
+        }
+        }
+    .noitem{
+        text-align: center;
+        color: #c8c8c8;
+        margin-top: 52%;
+        font-size: 20px;
+        padding: 5%;
+       }
     
     ion-icon{
         font-size: 30px;
@@ -93,6 +110,17 @@ ion-content{
     border-radius: 6px;
     margin-top: 3%;
     border: 1px solid #60605f;
+    }
+    .cam1{
+        position: absolute;
+        right: 78%;
+        --size: 23px;
+        --border-radius: 30px;
+        --border-color-checked: #4caf50;
+        --background-checked: #4caf50;
+        border-radius: -5px;
+        margin-top: 6%;
+     
     }
     ion-card{
     margin: 0;

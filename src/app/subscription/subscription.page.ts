@@ -17,6 +17,10 @@ export class SubscriptionPage implements OnInit {
   userid: string;
   subscriptionlist: any;
   pkgdetail: any;
+  packslist: any;
+  credithistorylist: any;
+  selectedpack: any;
+  sharealbumcount: string;
   constructor(public http: HttpClient,
     public loadingController: LoadingController,
     public actionSheetController: ActionSheetController,
@@ -26,6 +30,7 @@ export class SubscriptionPage implements OnInit {
     public activatedRoute : ActivatedRoute,
     private navCtrl:NavController) {
       this.userid = localStorage.getItem("userid");
+      this.sharealbumcount = this.activatedRoute.snapshot.paramMap.get('modelName');
      }
 
     httpOptions = {
@@ -48,16 +53,31 @@ export class SubscriptionPage implements OnInit {
       duration: 2000
     });
 
-    this.http.get(this.rootapi+'subscription',this.httpOptions).subscribe(async (data:any) => {
+    this.http.get(this.rootapi+'creditpacks',this.httpOptions).subscribe(async (data:any) => {
       console.log(data);
-     this.subscriptionlist=data.Levels;
+     this.packslist=data.Packs;
+     
+     
+    });
+    this.http.get(this.rootapi+'creditpacks?uid='+this.userid,this.httpOptions).subscribe(async (data:any) => {
+      console.log(data);
+     this.credithistorylist=data.Histories;
      
      
     });
     await loading.present();
   }
-  upgrade(){
-    this.navCtrl.navigateForward('/tabs/tab2/Payment-cards');
+  active(data){
+
+    console.log(data);
+   this.selectedpack=data;
+   
   }
+  purchasenow(){
+    this.router.navigate(['/tabs/tab2/Payment-cards', {modelName: this.selectedpack.ID,modelname2:this.sharealbumcount}]);
+  
+  }
+
+  
 
 }

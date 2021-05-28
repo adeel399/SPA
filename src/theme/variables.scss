@@ -248,6 +248,51 @@
   
 }
 .share-via{
-  --height: 32% !important;
+  --height: 70% !important;
   --width:90%  !important;
+}
+.share-Code{
+  --height: 100% !important;
+  --width:90%  !important;
+}
+
+.share-class{
+  button.alert-button.ion-focusable.ion-activatable.btn1.sc-ion-alert-md {
+    color: #23b723;
+    font-weight: bold;
+    font-size: 15px;
+}
+button.alert-button.ion-focusable.ion-activatable.btn2.sc-ion-alert-md {
+  color: #1aa2e0;
+  font-weight: bold;
+  font-size: 15px;
+}
+button.alert-button.ion-focusable.ion-activatable.btn3.sc-ion-alert-md {
+  color: #ff5722;
+  font-weight: bold;
+  font-size: 15px;
+}
+  .alert-wrapper {
+     border-radius: 18px;
+     background: linear-gradient(155deg,#9e9e9e , #eeeeee);
+    .alert-title {
+      text-align: center;
+    }
+    .alert-sub-title {
+      text-align: center;
+      color: #0e0e0e;
+    }
+  
+    .alert-message {
+      text-align: center;
+      color: #0e0e0e;
+    }
+  
+    .alert-button-inner {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+  
+  }
 }

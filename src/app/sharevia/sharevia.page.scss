@@ -3,17 +3,76 @@
 
 
 div{
-    
-    .linkedin{
-        color:#1f9422;
-        font-size: 30px;
-    }
-    .email{
-        color: #3AC3F5;
-        font-size: 30px;
-    }
-    .msg{
-        color: #ff5722;
-        font-size: 30px;
+    overflow: scroll;
+    // .linkedin{
+    //     color:#1f9422;
+    //     font-size: 30px;
+    // }
+    // .email{
+    //     color: #3AC3F5;
+    //     font-size: 30px;
+    // }
+    // .msg{
+    //     color: #ff5722;
+    //     font-size: 30px;
+    // }
+    ion-list{
+        p{
+            color: black;
+        }
+        .social{
+            color: green;
+           font-size: 25px;
+          margin-top: 55%;
+        }
+        .delete{
+            color: red;
+           font-size: 25px;
+           margin-top: 55%;
+        }
+        ion-button{
+            --background: linear-gradient(155deg,#245527 , #2aa02d);
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .MSG{
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .expand{
+            font-size: 22px;
+            color: #245527;
+            margin-top: 45%;
+        }
+        ion-card{
+            background: linear-gradient( 155deg,#d1d1d1 , #ecebeb);
+            border-radius: 23px;
+            padding: 0%;
+            padding-left: 3%;
+            padding-right: 0%;
+            margin-bottom: 2%;
+            p{
+                
+                font-size: 10px;
+                font-weight: bold;
+                margin: 3px;
+            }
+            .albumtitle{
+                margin-top: 4%;
+            }
+            span{
+                font-weight: bold;
+                font-size: 14px;
+            }
+            
+        }
+        ion-toggle.toggle-checked {
+            --background-checked:#e3e3e3;
+            --handle-background-checked:linear-gradient(155deg,#245527 , #2aa02d);
+          }
+          .alert-wrapper.sc-ion-alert-md {
+            border-radius: 18px  !important;
+          }
     }
 }

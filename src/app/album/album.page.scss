@@ -87,9 +87,34 @@ ion-content{
     }
     .cam{
         position: absolute;
-        right: 8%;
+        right: 4%;
         color: red;
         font-size: 25px;
+    }
+    .addtext{
+        color: #277a2a;
+    position: absolute;
+    font-size: 20px;
+    left: 5%;
+    bottom: 5%;
+    }
+    .cam1{
+        position: absolute;
+    right: 84%;
+    --size: 23px;
+    --border-radius: 30px;
+    --border-color-checked: #4caf50;
+    --background-checked: #4caf50;
+    border-radius: -5px;
+    margin-top: 1%;
+     
+    }
+    .orngball{
+        color: #e67300;
+        position: absolute;
+        font-size: 17px;
+        right: 6%;
+        bottom: 5%;
     }
     ion-card{
     margin: 0;

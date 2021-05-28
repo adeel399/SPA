@@ -73,6 +73,14 @@ const routes: Routes = [
   {
     path: 'imgmodel',
     loadChildren: () => import('./imgmodel/imgmodel.module').then( m => m.ImgmodelPageModule)
+  },
+  {
+    path: 'sharecode',
+    loadChildren: () => import('./sharecode/sharecode.module').then( m => m.SharecodePageModule)
+  },
+  {
+    path: 'multipleimgmodel',
+    loadChildren: () => import('./multipleimgmodel/multipleimgmodel.module').then( m => m.MultipleimgmodelPageModule)
   }
 ];
 

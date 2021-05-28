@@ -2,9 +2,17 @@
 
 <ion-content>
 <ion-list>
-  <ion-item (click)="share()">Share Album</ion-item>
-  <ion-item (click)="userlist()">View Users</ion-item>
-  <ion-item (click)="delete()">Delete Album</ion-item>
-  <ion-item (click)="rename()">Rename Album</ion-item>
+  <ion-item (click)="share()" *ngIf="Owner=='1'">Share Album</ion-item>
+  <ion-item (click)="share()" *ngIf="Owner=='0' && allowexp=='1'">Share Album</ion-item>
+  <ion-item (click)="albumview(albumid,Owner,albumownerpic,albumowner)" *ngIf="pendingimageapprove=='1'">
+    Approve Images<span><ion-icon name="bowling-ball"></ion-icon></span>
+  </ion-item>
+  <ion-item (click)="userlist()" *ngIf="pendinguserapprove=='0' && Owner=='1'">View Users</ion-item>
+  <ion-item (click)="userlist()" *ngIf="pendinguserapprove=='1' && Owner=='1'" >
+    Approve Users<span ><ion-icon name="bowling-ball"></ion-icon></span>
+
+  </ion-item>
+  <ion-item (click)="delete()" *ngIf="Owner=='1'">Delete Album</ion-item>
+  <ion-item (click)="rename()"  *ngIf="Owner=='1'">Rename Album</ion-item>
 </ion-list>
 </ion-content>

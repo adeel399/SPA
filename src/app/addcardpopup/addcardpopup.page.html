@@ -1,24 +1,38 @@
 
   <ion-content class="ion-padding-horizontal">
   <h3 class="ion-text-center">Add New Card</h3>
+  <form [formGroup]="cardForm">
   <ion-label>Name on Card</ion-label>
   <ion-input type="text" placeholder="Your Name"></ion-input>
  <br>
  <ion-label>Card Number</ion-label>
-  <ion-input type="number" placeholder="Your Card Number"></ion-input>
-  <ion-row>
+ <ion-input type="tel" pattern="^[0-9]*$"  required="true" maxLength="16" formControlName="cardnum" [(ngModel)]="cardnum" placeholder="xxxx-xxxx-xxxx-xxxx"></ion-input>
+ <ion-label error-field color="danger" *ngIf="cardForm.controls.cardnum.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.cardnum.required}}</ion-label>
+  <ion-label error-field color="danger" *ngIf="cardForm.controls.cardnum.hasError('maxLength') && reactiveSubmitted" no-margin>{{errorMessages.cardnum.maxLength}}</ion-label> 
+ <ion-row>
     <ion-col>
       <ion-label>Valid Upto</ion-label>
-      <ion-datetime value="2019-10-01T15:43:40.394Z"></ion-datetime>
+      <ion-input  type="tel" pattern="^[0-9]*$" required="true" formControlName="month" maxLength="2" [(ngModel)]="month" placeholder="MM"></ion-input>
+      <ion-label error-field color="danger" *ngIf="cardForm.controls.month.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.month.required}}</ion-label>
+      <ion-label error-field color="danger" *ngIf="cardForm.controls.month.hasError('maxLength') && reactiveSubmitted" no-margin>{{errorMessages.month.maxLength}}</ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label>Year</ion-label>
+      <ion-input  type="tel" pattern="^[0-9]*$" required="true" formControlName="year"  maxLength="4" [(ngModel)]="year" placeholder="YYYY"></ion-input>
+      <ion-label error-field color="danger" *ngIf="cardForm.controls.year.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.year.required}}</ion-label>
+      <ion-label error-field color="danger" *ngIf="cardForm.controls.year.hasError('maxLength') && reactiveSubmitted" no-margin>{{errorMessages.year.maxLength}}</ion-label>
     </ion-col>
     <ion-col>
       <ion-label>CVC</ion-label>
-      <ion-input type="number" placeholder="123"></ion-input>
+      <ion-input  type="tel" pattern="^[0-9]*$" required="true" formControlName="key"  maxLength="3" [(ngModel)]="key" placeholder="123"></ion-input>
+          <ion-label error-field color="danger" *ngIf="cardForm.controls.key.hasError('required') && reactiveSubmitted" no-margin>{{errorMessages.key.required}}</ion-label>
+          <ion-label error-field color="danger" *ngIf="cardForm.controls.key.hasError('maxLength') && reactiveSubmitted" no-margin>{{errorMessages.key.maxLength}}</ion-label>
     </ion-col>
   </ion-row>
-  <ion-button shape="block" class="addcard" (click)="addcard()">
+  <ion-button shape="block" class="addcard"  [disabled]="!cardForm.valid" (click)="addcard()">
     Add Card
   </ion-button>
+  </form>
 </ion-content>
  
   

@@ -20,7 +20,9 @@
 
 <ion-content class="ion-padding-horizontal">
 <br>
-<ion-card *ngFor="let card of cardlist">
+<p class="ion-text-center plzselc">Please Select a Payment Card</p>
+<ion-card *ngFor="let card of cardlist" [ngClass]="{'mess': selectedItem == card}" (click)="listClick($event, card)" >
+  <ion-icon name="close-outline" class="remove" (click)="deletecard(card.ID)"></ion-icon>
   <img src="{{card.Brand}}">
   <ion-row>
     <ion-col class="ion-text-center digit">****</ion-col>
@@ -34,7 +36,11 @@
     <ion-col class="ion-text-end" size="8">Valid Thru {{card.Expiry}}</ion-col>
   </ion-row>
 </ion-card>
-<ion-button shape="block" class="addcard" (click)="addcard()">
-  Add New Card
+<ion-button shape="block" class="addcard" *ngIf="cardlistlenght > '0'" (click)="checkout()">
+  Pay Now
 </ion-button>
+<div  *ngIf ="cardlistlenght =='0' || cardlistlenght == 'undefined' ">
+  <p class="noitem">You currently have no Card Added.</p>
+  
+  </div>
 </ion-content>

@@ -10,6 +10,7 @@ import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { IonicGestureConfig } from './gesture/IonicGestureConfig'
+import { Stripe } from '@ionic-native/stripe/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -17,6 +18,7 @@ import { IonicGestureConfig } from './gesture/IonicGestureConfig'
   providers: [
     HttpClient,
     Camera,
+    Stripe,
     PhotoViewer,
     SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
