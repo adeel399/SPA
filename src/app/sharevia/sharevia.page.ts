@@ -204,310 +204,310 @@ toggleShowPassword(index) {
 
    }
 
-   async Allowsharechange(event){
-  console.log(event.detail.checked);
-  let loading =  await this.loadingController.create({
-    cssClass: 'my-custom-class',
-    message: 'Please wait...',
-    duration: 2000
-  });
-  if(event.detail.checked == true){
-    this.shid=1;
-  }else{
-    this.shid=0;
-  }
-  if(this.expshare == false){
-    this.expshare=0;
+  //  async Allowsharechange(event){
+  // console.log(event.detail.checked);
+  // let loading =  await this.loadingController.create({
+  //   cssClass: 'my-custom-class',
+  //   message: 'Please wait...',
+  //   duration: 2000
+  // });
+  // if(event.detail.checked == true){
+  //   this.shid=1;
+  // }else{
+  //   this.shid=0;
+  // }
+  // if(this.expshare == false){
+  //   this.expshare=0;
 
-  }else{
-   this.expshare=1;
-  }
-  if(this.allowupload == false){
-    this.allowupload=0;
+  // }else{
+  //  this.expshare=1;
+  // }
+  // if(this.allowupload == false){
+  //   this.allowupload=0;
 
-  }else{
-   this.allowupload=1;
-  }
-  if(this.preapprove==false){
-    this.preapprove=0;
-  }else{
-    this.preapprove=1;
-  }
-  console.log("albumid",this.AlbumID);
-  console.log("shareID",this.shid);
-  console.log("uploadid",this.allowupload);
-  console.log("Expshare",this.expshare);
-  this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.shid+'&upid='+this.allowupload+'&shexid='+this.expshare+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
-    console.log(data);
-   this.credit=data.Credits;
-   this.sharemsg=data.Message;
-   this.ownerID=data.IsOwner;
-   this.sharecodes=data.ShareCodes;
+  // }else{
+  //  this.allowupload=1;
+  // }
+  // if(this.preapprove==false){
+  //   this.preapprove=0;
+  // }else{
+  //   this.preapprove=1;
+  // }
+  // console.log("albumid",this.AlbumID);
+  // console.log("shareID",this.shid);
+  // console.log("uploadid",this.allowupload);
+  // console.log("Expshare",this.expshare);
+  // this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.shid+'&upid='+this.allowupload+'&shexid='+this.expshare+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
+  //   console.log(data);
+  //  this.credit=data.Credits;
+  //  this.sharemsg=data.Message;
+  //  this.ownerID=data.IsOwner;
+  //  this.sharecodes=data.ShareCodes;
    
 
-   this.expshare=data.AllowExpShare;
-   if(this.expshare == 0){
-     this.expshare=false;
+  //  this.expshare=data.AllowExpShare;
+  //  if(this.expshare == 0){
+  //    this.expshare=false;
 
-   }else{
-    this.expshare=true;
-   }
-   this.generate=data.AllowGenerate;
-   this.buybutton=data.ShowBuyButton;
-   this.allowshare=data.AllowShare;
-   if(this.allowshare == 0){
-    this.allowshare=false;
+  //  }else{
+  //   this.expshare=true;
+  //  }
+  //  this.generate=data.AllowGenerate;
+  //  this.buybutton=data.ShowBuyButton;
+  //  this.allowshare=data.AllowShare;
+  //  if(this.allowshare == 0){
+  //   this.allowshare=false;
 
-  }else{
-   this.allowshare=true;
-  }
+  // }else{
+  //  this.allowshare=true;
+  // }
    
-   this.allowupload=data.AllowUpload;
-   if(this.allowupload == 0){
-    this.allowupload=false;
+  //  this.allowupload=data.AllowUpload;
+  //  if(this.allowupload == 0){
+  //   this.allowupload=false;
 
-  }else{
-   this.allowupload=true;
-  }
-  this.preapprove=data.AutoApproveUpload;
-    if(this.preapprove == 0){
-      this.preapprove=false;
-    }else{
-      this.preapprove=true;
-    }
+  // }else{
+  //  this.allowupload=true;
+  // }
+  // this.preapprove=data.AutoApproveUpload;
+  //   if(this.preapprove == 0){
+  //     this.preapprove=false;
+  //   }else{
+  //     this.preapprove=true;
+  //   }
    
-  });
-  await loading.present();
-   }
+  // });
+  // await loading.present();
+  //  }
 
-   async Allowuploadchange(event){
-    console.log(event.detail.checked);
-    let loading =  await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-      duration: 2000
-    });
-    if(event.detail.checked == true){
-      this.upid=1;
-      if(this.preapprove==false){
-        this.preapprove=0;
-      }else{
-        this.preapprove=1;
-      }
-    }else{
-      this.upid=0;
-      this.preapprove=0;
-    }
-    if(this.expshare == false){
-      this.expshare=0;
+  //  async Allowuploadchange(event){
+  //   console.log(event.detail.checked);
+  //   let loading =  await this.loadingController.create({
+  //     cssClass: 'my-custom-class',
+  //     message: 'Please wait...',
+  //     duration: 2000
+  //   });
+  //   if(event.detail.checked == true){
+  //     this.upid=1;
+  //     if(this.preapprove==false){
+  //       this.preapprove=0;
+  //     }else{
+  //       this.preapprove=1;
+  //     }
+  //   }else{
+  //     this.upid=0;
+  //     this.preapprove=0;
+  //   }
+  //   if(this.expshare == false){
+  //     this.expshare=0;
   
-    }else{
-     this.expshare=1;
-    }
-    if(this.allowshare == false){
-      this.allowshare=0;
+  //   }else{
+  //    this.expshare=1;
+  //   }
+  //   if(this.allowshare == false){
+  //     this.allowshare=0;
 
-    }else{
-     this.allowshare=1;
-    }
+  //   }else{
+  //    this.allowshare=1;
+  //   }
    
-    console.log("albumid",this.AlbumID);
-    console.log("shareID",this.upid);
-    console.log("uploadid",this.allowupload);
-    console.log("Expshare",this.expshare);
-    this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.allowshare+'&upid='+this.upid+'&shexid='+this.expshare+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
-      console.log(data);
-     this.credit=data.Credits;
-     this.sharemsg=data.Message;
-     this.ownerID=data.IsOwner;
-     this.sharecodes=data.ShareCodes;
+  //   console.log("albumid",this.AlbumID);
+  //   console.log("shareID",this.upid);
+  //   console.log("uploadid",this.allowupload);
+  //   console.log("Expshare",this.expshare);
+  //   this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.allowshare+'&upid='+this.upid+'&shexid='+this.expshare+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
+  //     console.log(data);
+  //    this.credit=data.Credits;
+  //    this.sharemsg=data.Message;
+  //    this.ownerID=data.IsOwner;
+  //    this.sharecodes=data.ShareCodes;
      
   
-     this.expshare=data.AllowExpShare;
-     if(this.expshare == 0){
-       this.expshare=false;
+  //    this.expshare=data.AllowExpShare;
+  //    if(this.expshare == 0){
+  //      this.expshare=false;
   
-     }else{
-      this.expshare=true;
-     }
-     this.generate=data.AllowGenerate;
-     this.buybutton=data.ShowBuyButton;
-     this.allowshare=data.AllowShare;
-     if(this.allowshare == 0){
-      this.allowshare=false;
+  //    }else{
+  //     this.expshare=true;
+  //    }
+  //    this.generate=data.AllowGenerate;
+  //    this.buybutton=data.ShowBuyButton;
+  //    this.allowshare=data.AllowShare;
+  //    if(this.allowshare == 0){
+  //     this.allowshare=false;
   
-    }else{
-     this.allowshare=true;
-    }
+  //   }else{
+  //    this.allowshare=true;
+  //   }
      
-     this.allowupload=data.AllowUpload;
-     if(this.allowupload == 0){
-      this.allowupload=false;
+  //    this.allowupload=data.AllowUpload;
+  //    if(this.allowupload == 0){
+  //     this.allowupload=false;
   
-    }else{
-     this.allowupload=true;
-    }
-    this.preapprove=data.AutoApproveUpload;
-    if(this.preapprove == 0){
-      this.preapprove=false;
-    }else{
-      this.preapprove=true;
-    }
-    });
-    await loading.present();
-   }
+  //   }else{
+  //    this.allowupload=true;
+  //   }
+  //   this.preapprove=data.AutoApproveUpload;
+  //   if(this.preapprove == 0){
+  //     this.preapprove=false;
+  //   }else{
+  //     this.preapprove=true;
+  //   }
+  //   });
+  //   await loading.present();
+  //  }
 
-   async Allowexpsharechange(event){
-    console.log(event.detail.checked);
-    let loading =  await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-      duration: 2000
-    });
-    if(event.detail.checked == true){
-      this.shexpid=1;
-    }else{
-      this.shexpid=0;
-    }
-    if(this.expshare == false){
-      this.expshare=0;
+  //  async Allowexpsharechange(event){
+  //   console.log(event.detail.checked);
+  //   let loading =  await this.loadingController.create({
+  //     cssClass: 'my-custom-class',
+  //     message: 'Please wait...',
+  //     duration: 2000
+  //   });
+  //   if(event.detail.checked == true){
+  //     this.shexpid=1;
+  //   }else{
+  //     this.shexpid=0;
+  //   }
+  //   if(this.expshare == false){
+  //     this.expshare=0;
 
-    }else{
-     this.expshare=1;
-    }
-    if(this.allowshare == false){
-      this.allowshare=0;
+  //   }else{
+  //    this.expshare=1;
+  //   }
+  //   if(this.allowshare == false){
+  //     this.allowshare=0;
 
-    }else{
-     this.allowshare=1;
-    }
-    if(this.allowupload == false){
-      this.allowupload=0;
+  //   }else{
+  //    this.allowshare=1;
+  //   }
+  //   if(this.allowupload == false){
+  //     this.allowupload=0;
   
-    }else{
-     this.allowupload=1;
-    }
-    if(this.preapprove==false){
-      this.preapprove=0;
-    }else{
-      this.preapprove=1;
-    }
+  //   }else{
+  //    this.allowupload=1;
+  //   }
+  //   if(this.preapprove==false){
+  //     this.preapprove=0;
+  //   }else{
+  //     this.preapprove=1;
+  //   }
     
-    this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.allowshare+'&upid='+this.allowupload+'&shexid='+this.shexpid+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
-      console.log(data);
-     this.credit=data.Credits;
-     this.sharemsg=data.Message;
-     this.ownerID=data.IsOwner;
-     this.sharecodes=data.ShareCodes;
+  //   this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.allowshare+'&upid='+this.allowupload+'&shexid='+this.shexpid+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
+  //     console.log(data);
+  //    this.credit=data.Credits;
+  //    this.sharemsg=data.Message;
+  //    this.ownerID=data.IsOwner;
+  //    this.sharecodes=data.ShareCodes;
      
   
-     this.expshare=data.AllowExpShare;
-     if(this.expshare == 0){
-       this.expshare=false;
+  //    this.expshare=data.AllowExpShare;
+  //    if(this.expshare == 0){
+  //      this.expshare=false;
   
-     }else{
-      this.expshare=true;
-     }
-     this.generate=data.AllowGenerate;
-     this.buybutton=data.ShowBuyButton;
-     this.allowshare=data.AllowShare;
-     if(this.allowshare == 0){
-      this.allowshare=false;
+  //    }else{
+  //     this.expshare=true;
+  //    }
+  //    this.generate=data.AllowGenerate;
+  //    this.buybutton=data.ShowBuyButton;
+  //    this.allowshare=data.AllowShare;
+  //    if(this.allowshare == 0){
+  //     this.allowshare=false;
   
-    }else{
-     this.allowshare=true;
-    }
+  //   }else{
+  //    this.allowshare=true;
+  //   }
      
-     this.allowupload=data.AllowUpload;
-     if(this.allowupload == 0){
-      this.allowupload=false;
+  //    this.allowupload=data.AllowUpload;
+  //    if(this.allowupload == 0){
+  //     this.allowupload=false;
   
-    }else{
-     this.allowupload=true;
-    }
-    this.preapprove=data.AutoApproveUpload;
-    if(this.preapprove == 0){
-      this.preapprove=false;
-    }else{
-      this.preapprove=true;
-    }
+  //   }else{
+  //    this.allowupload=true;
+  //   }
+  //   this.preapprove=data.AutoApproveUpload;
+  //   if(this.preapprove == 0){
+  //     this.preapprove=false;
+  //   }else{
+  //     this.preapprove=true;
+  //   }
      
-    });
-    await loading.present();
-   }
+  //   });
+  //   await loading.present();
+  //  }
 
-   async AllowpreApprovechange(event){
-    console.log(event.detail.checked);
-    if(event.detail.checked == true){
-      this.preapprove=1;
-    }else{
-      this.preapprove=0;
-    }
-    if(this.expshare == false){
-      this.expshare=0;
+  //  async AllowpreApprovechange(event){
+  //   console.log(event.detail.checked);
+  //   if(event.detail.checked == true){
+  //     this.preapprove=1;
+  //   }else{
+  //     this.preapprove=0;
+  //   }
+  //   if(this.expshare == false){
+  //     this.expshare=0;
 
-    }else{
-     this.expshare=1;
-    }
-    if(this.allowshare == false){
-      this.allowshare=0;
+  //   }else{
+  //    this.expshare=1;
+  //   }
+  //   if(this.allowshare == false){
+  //     this.allowshare=0;
 
-    }else{
-     this.allowshare=1;
-    }
-    if(this.allowupload == false){
-      this.allowupload=0;
+  //   }else{
+  //    this.allowshare=1;
+  //   }
+  //   if(this.allowupload == false){
+  //     this.allowupload=0;
   
-    }else{
-     this.allowupload=1;
-    }
-    let loading =  await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-      duration: 2000
-    });
-    this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.allowshare+'&upid='+this.allowupload+'&shexid='+this.expshare+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
-      console.log(data);
-     this.credit=data.Credits;
-     this.sharemsg=data.Message;
-     this.ownerID=data.IsOwner;
-     this.sharecodes=data.ShareCodes;
+  //   }else{
+  //    this.allowupload=1;
+  //   }
+  //   let loading =  await this.loadingController.create({
+  //     cssClass: 'my-custom-class',
+  //     message: 'Please wait...',
+  //     duration: 2000
+  //   });
+  //   this.http.get(this.rootapi+'share?aid='+this.AlbumID+'&shid='+this.allowshare+'&upid='+this.allowupload+'&shexid='+this.expshare+'&apid='+this.preapprove,this.httpOptions).subscribe(async (data:any) => {
+  //     console.log(data);
+  //    this.credit=data.Credits;
+  //    this.sharemsg=data.Message;
+  //    this.ownerID=data.IsOwner;
+  //    this.sharecodes=data.ShareCodes;
      
   
-     this.expshare=data.AllowExpShare;
-     if(this.expshare == 0){
-       this.expshare=false;
+  //    this.expshare=data.AllowExpShare;
+  //    if(this.expshare == 0){
+  //      this.expshare=false;
   
-     }else{
-      this.expshare=true;
-     }
-     this.generate=data.AllowGenerate;
-     this.buybutton=data.ShowBuyButton;
-     this.allowshare=data.AllowShare;
-     if(this.allowshare == 0){
-      this.allowshare=false;
+  //    }else{
+  //     this.expshare=true;
+  //    }
+  //    this.generate=data.AllowGenerate;
+  //    this.buybutton=data.ShowBuyButton;
+  //    this.allowshare=data.AllowShare;
+  //    if(this.allowshare == 0){
+  //     this.allowshare=false;
   
-    }else{
-     this.allowshare=true;
-    }
+  //   }else{
+  //    this.allowshare=true;
+  //   }
      
-     this.allowupload=data.AllowUpload;
-     if(this.allowupload == 0){
-      this.allowupload=false;
+  //    this.allowupload=data.AllowUpload;
+  //    if(this.allowupload == 0){
+  //     this.allowupload=false;
   
-    }else{
-     this.allowupload=true;
-    }
-    this.preapprove=data.AutoApproveUpload;
-    if(this.preapprove == 0){
-      this.preapprove=false;
-    }else{
-      this.preapprove=true;
-    }
+  //   }else{
+  //    this.allowupload=true;
+  //   }
+  //   this.preapprove=data.AutoApproveUpload;
+  //   if(this.preapprove == 0){
+  //     this.preapprove=false;
+  //   }else{
+  //     this.preapprove=true;
+  //   }
      
-    });
-    await loading.present();
-   }
+  //   });
+  //   await loading.present();
+  //  }
 
    async delete(sharecode){
     

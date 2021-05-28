@@ -19,6 +19,8 @@ export class ImgmodelPage implements OnInit {
   };
   firstimg: any;
   userid: string;
+  showEye: boolean = true;
+  currentDisplayIndex:number=1;
   data1: { ID: any; Text: any; AuthorID: string; };
   constructor(private navCtrl:NavController,
     public alertController: AlertController,
@@ -169,7 +171,16 @@ export class ImgmodelPage implements OnInit {
 
     await alert.present();
   }
- 
+  toggleShowPassword(index) {
+    this.showEye = !this.showEye;
+    if(this.currentDisplayIndex==index)
+    {
+      this.currentDisplayIndex=-1; 
+      return; 
+    }else{
+    this.currentDisplayIndex = index; 
+     }
+}
 
   close(){
     this.modalController.dismiss({

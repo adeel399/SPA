@@ -33,10 +33,19 @@ ion-content{
         position: absolute;
         top: 0%;
     }
+    .expand{
+        font-size: 22px;
+        color: #fdfdfd;
+    }
+    .togl{
+        position: absolute;
+    top: 0%;
+    right: 8%;
+    }
     ion-card{
         margin: 0px;
     padding: 0;
-    background: transparent;
+    background:#45444457;;
     box-shadow: none;
     ion-card-header{
         margin: 0;
@@ -99,7 +108,7 @@ ion-content{
     }
     .topcrd{
         position: absolute;
-        top: 0%;
+        top: 5%;
         width: 94%;
     }
 
